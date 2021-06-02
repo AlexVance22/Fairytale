@@ -27,7 +27,7 @@ project "Fairytale"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"Fairytale/vendor/spdlog/include"
 	}
 
 	filter "system:windows"
@@ -76,7 +76,7 @@ project "Sandbox"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include",
+		"Fairytale/vendor/spdlog/include",
 		"Fairytale/src"
 	}
 
