@@ -1,0 +1,3 @@
+[submodule "Fairytale/vendor/spdlog"]
+	path = Fairytale/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
