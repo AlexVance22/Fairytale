@@ -1,0 +1,285 @@
+{
+  "assets": {
+    "textures": [
+      {
+        "name": "tileset",
+        "file": "res/textures/world.png",
+        "smooth": false
+      },
+      {
+        "name": "player",
+        "file": "res/textures/player.png",
+        "smooth": false
+      },
+      {
+        "name": "tree",
+        "file": "res/textures/tree.png",
+        "smooth": false
+      },
+      {
+        "name": "enemy",
+        "file": "res/textures/enemy.png",
+        "smooth": false
+      }
+    ],
+
+    "shaders": [
+      {
+        "name": "glitch",
+        "file": "res/shaders/glitch.frag",
+        "uniforms": [
+          {
+            "name": "u_texture",
+            "type": "sampler",
+            "value": null
+          },
+          {
+            "name": "u_strength",
+            "type": "float",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+
+  "world": {
+    "map": [
+      [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ],
+      [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ]
+    ]
+  },
+
+  "entities": [
+    {
+      "tag": "player",
+      "transform": {
+        "loc": [ 64, 64 ],
+        "rot": 0,
+        "scl": [ 1, 1 ]
+      },
+      "layer": "default",
+      "vertex-array": {
+        "primitive": 6,
+        "vertices": null,
+        "col": [ 255, 255, 255, 255 ]
+      },
+      "material": {
+        "texture": "player",
+        "shader": null
+      },
+      "animation": {
+        "anim-count": 3,
+        "frame-count": 1,
+        "anim-begin": 0,
+        "frame-begin": 0,
+        "play": true,
+        "loop": true,
+        "frame-time": 1
+      },
+      "rigidbody": {
+        "implicit": true,
+        "type": 2,
+        "angle": 0,
+        "fixed-rotation": true,
+        "bullet": false,
+        "enabled": true,
+
+        "colliders": [
+          {
+            "id": "main",
+            "shape": "circle",
+            "offset": [16, 16],
+            "radius": 16,
+            "density": 30,
+            "friction": 0.2,
+            "is-sensor": false
+          },
+          {
+            "id": "axe-range",
+            "shape": "circle",
+            "offset": [16, 16],
+            "radius": 24,
+            "density": 0,
+            "friction": 0.2,
+            "is-sensor": true
+          }
+        ]
+      },
+      "movement":{
+        "type": 0,
+        "speed": 3,
+        "locked": false
+      },
+      "script": "res/scripts/player.lua"
+    },
+
+    {
+      "tag": "t1",
+      "transform": {
+        "loc": [ 256, 128 ],
+        "rot": 0,
+        "scl": [ 1, 1 ]
+      },
+      "layer": "tree",
+      "vertex-array": {
+        "primitive": 6,
+        "vertices": null,
+        "col": [ 255, 255, 255, 255 ]
+      },
+      "material": {
+        "texture": "tree",
+        "shader": null
+      },
+      "animation": {
+        "anim-count": 2,
+        "frame-count": 1,
+        "anim-begin": 0,
+        "frame-begin": 0,
+        "play": true,
+        "loop": true,
+        "frame-time": 1
+      },
+      "rigidbody": {
+        "implicit": true,
+        "type": 0,
+        "angle": 0,
+        "fixed-rotation": true,
+        "bullet": false,
+        "enabled": true,
+
+        "colliders": [
+          {
+            "shape": "circle",
+            "offset": [16, 16],
+            "radius": 16,
+            "density": 30,
+            "friction": 0.2,
+            "is-sensor": true
+          }
+        ]
+      },
+      "script": "res/scripts/tree.lua"
+    },
+
+    {
+      "tag": "enemy",
+      "transform": {
+        "loc": [ 128, 196 ],
+        "rot": 0,
+        "scl": [ 1, 1 ]
+      },
+      "layer": "default",
+      "vertex-array": {
+        "primitive": 6,
+        "vertices": null,
+        "col": [ 255, 255, 255, 255 ]
+      },
+      "material": {
+        "texture": "enemy",
+        "shader": null
+      },
+      "animation": {
+        "anim-count": 1,
+        "frame-count": 1,
+        "anim-begin": 0,
+        "frame-begin": 0,
+        "play": true,
+        "loop": true,
+        "frame-time": 1
+      },
+      "rigidbody": {
+        "implicit": true,
+        "type": 1,
+        "angle": 0,
+        "fixed-rotation": true,
+        "bullet": false,
+        "enabled": true,
+
+        "colliders": [
+          {
+            "shape": "circle",
+            "offset": [16, 16],
+            "radius": 16,
+            "density": 30,
+            "friction": 0.2,
+            "is-sensor": true
+          }
+        ]
+      },
+      "script": "res/scripts/enemy.lua"
+    },
+
+    {
+      "tag": "scene-trigger",
+      "transform": {
+        "loc": [ 300, 0 ],
+        "rot": 0,
+        "scl": [ 1, 1 ]
+      },
+      "layer": "logic",
+      "rigidbody": {
+        "implicit": true,
+        "type": 0,
+        "angle": 0,
+        "fixed-rotation": true,
+        "bullet": false,
+        "enabled": true,
+
+        "colliders": [
+          {
+            "shape": "box",
+            "offset": [ 0, 0 ],
+            "size": [ 32, 270 ],
+            "density": 0,
+            "friction": 0.2,
+            "is-sensor": true
+          }
+        ]
+      },
+      "script": "res/scripts/wall.lua"
+    },
+
+    {
+      "tag": "world",
+      "transform": {
+        "loc": [ 0, 0 ],
+        "rot": 0,
+        "scl": [ 1, 1 ]
+      },
+      "layer": "default",
+      "rigidbody": {
+        "implicit": true,
+        "type": 0,
+        "angle": 0,
+        "fixed-rotation": true,
+        "density": 30,
+        "bullet": false,
+        "enabled": true,
+
+        "colliders": [
+          {
+            "shape": "chain",
+            "vertices": [
+              [ 32, 32 ],
+              [ 32, 256 ],
+              [ 480, 256 ],
+              [ 480, 32 ]
+            ],
+            "loop": true,
+            "density": 30,
+            "friction": 0.2,
+            "is-sensor": false
+          }
+        ]
+      }
+    }
+  ]
+}
